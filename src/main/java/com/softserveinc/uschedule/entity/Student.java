@@ -2,6 +2,8 @@ package com.softserveinc.uschedule.entity;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "student")
 public class Student {
     @Column(name = "student_id")
     private Integer id;

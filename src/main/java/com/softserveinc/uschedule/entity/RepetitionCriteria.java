@@ -1,10 +1,9 @@
 package com.softserveinc.uschedule.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "repetitionCriteria")
 public class RepetitionCriteria {
     @Id
     @Column(name = "repetition_criteria_id")

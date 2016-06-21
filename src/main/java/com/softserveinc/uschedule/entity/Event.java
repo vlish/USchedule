@@ -1,9 +1,12 @@
 package com.softserveinc.uschedule.entity;
 
+import com.softserveinc.uschedule.entity.util.LocalDatePersistenceConverter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "event")
 public class Event {
     @Id
     @Column(name = "event_id")
@@ -12,8 +15,10 @@ public class Event {
     @Column(name = "name")
     private String name;
     @Column(name = "start_date")
+    @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate startDate;
     @Column(name = "end_date")
+    @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate endDate;
     @Column(name = "info")
     private String info;

@@ -2,10 +2,8 @@ package com.softserveinc.uschedule.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by ostash on 21.06.2016.
- */
 @Entity
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,4 +12,22 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    public Role() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -1,5 +1,7 @@
 package com.softserveinc.uschedule.entity;
 
+import com.softserveinc.uschedule.entity.util.LocalDatePersistenceConverter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -20,6 +22,7 @@ public class User {
     @Column(name = "login_attempt_count")
     private Integer loginAttemptCount;
     @Column(name = "birthday")
+    @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate birthday;
     @Column(name = "locked")
     private Boolean locked;

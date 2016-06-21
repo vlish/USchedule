@@ -3,10 +3,8 @@ package com.softserveinc.uschedule.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by ostash on 21.06.2016.
- */
 @Entity
+@Table(name = "teacher")
 public class Teacher {
     @Id
     @Column(name = "teacher_id")
