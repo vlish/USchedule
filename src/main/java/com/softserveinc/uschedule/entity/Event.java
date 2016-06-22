@@ -1,9 +1,10 @@
 package com.softserveinc.uschedule.entity;
 
-import com.softserveinc.uschedule.entity.util.LocalDatePersistenceConverter;
+
+import com.softserveinc.uschedule.entity.util.LocalDateTimePersistenceConverter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "event")
@@ -14,16 +15,16 @@ public class Event {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @Column(name = "start_date")
-    @Convert(converter = LocalDatePersistenceConverter.class)
-    private LocalDate startDate;
-    @Column(name = "end_date")
-    @Convert(converter = LocalDatePersistenceConverter.class)
-    private LocalDate endDate;
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    @Column(name = "start_date_time")
+    private LocalDateTime startDateTime;
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    @Column(name = "end_date_time")
+    private LocalDateTime endDateTime;
     @Column(name = "info")
     private String info;
-    @Enumerated
-    private EventStatus eventStatus;
+    @Column(name = "eventStatus")
+    private Boolean eventStatus;
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
@@ -33,9 +34,6 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
-
-    public Event() {
-    }
 
     public Integer getId() {
         return id;
@@ -53,20 +51,20 @@ public class Event {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
     public String getInfo() {
@@ -75,14 +73,6 @@ public class Event {
 
     public void setInfo(String info) {
         this.info = info;
-    }
-
-    public EventStatus getEventStatus() {
-        return eventStatus;
-    }
-
-    public void setEventStatus(EventStatus eventStatus) {
-        this.eventStatus = eventStatus;
     }
 
     public Room getRoom() {
@@ -107,5 +97,13 @@ public class Event {
 
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
+    }
+
+    public Boolean getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(Boolean eventStatus) {
+        this.eventStatus = eventStatus;
     }
 }

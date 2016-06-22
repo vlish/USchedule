@@ -17,9 +17,6 @@ public class Room {
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private Set<Event> events;
 
-    public Room() {
-    }
-
     public Integer getId() {
         return id;
     }

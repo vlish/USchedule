@@ -23,9 +23,8 @@ public class Group {
     private Image image;
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
     private Set<Schedule> schedules;
-
-    public Group() {
-    }
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    private Set<UserToGroup> userToGroups;
 
     public Integer getId() {
         return id;
@@ -81,5 +80,13 @@ public class Group {
 
     public void setSchedules(Set<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    public Set<UserToGroup> getUserToGroups() {
+        return userToGroups;
+    }
+
+    public void setUserToGroups(Set<UserToGroup> userToGroups) {
+        this.userToGroups = userToGroups;
     }
 }

@@ -21,21 +21,26 @@ public class User {
     private String password;
     @Column(name = "login_attempt_count")
     private Integer loginAttemptCount;
+    @Column(name = "locked")
+    private Boolean locked;
     @Column(name = "birthday")
     @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate birthday;
-    @Column(name = "locked")
-    private Boolean locked;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "prhone")
+    private String prhone;
+    @Enumerated(EnumType.STRING)
+    private ScheduleViewType scheduleViewType;
+    @Enumerated(EnumType.STRING)
+    private NotificationType notificationType;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private Set<Event> events;
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
-    private Set<Student> students;
-
-    public User() {
-    }
+    private Set<UserToGroup> students;
 
     public Integer getId() {
         return id;
@@ -77,6 +82,14 @@ public class User {
         this.loginAttemptCount = loginAttemptCount;
     }
 
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
     public LocalDate getBirthday() {
         return birthday;
     }
@@ -85,12 +98,36 @@ public class User {
         this.birthday = birthday;
     }
 
-    public Boolean getLocked() {
-        return locked;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPrhone() {
+        return prhone;
+    }
+
+    public void setPrhone(String prhone) {
+        this.prhone = prhone;
+    }
+
+    public ScheduleViewType getScheduleViewType() {
+        return scheduleViewType;
+    }
+
+    public void setScheduleViewType(ScheduleViewType scheduleViewType) {
+        this.scheduleViewType = scheduleViewType;
+    }
+
+    public NotificationType getNotificationType() {
+        return notificationType;
+    }
+
+    public void setNotificationType(NotificationType notificationType) {
+        this.notificationType = notificationType;
     }
 
     public Image getImage() {
@@ -109,11 +146,11 @@ public class User {
         this.events = events;
     }
 
-    public Set<Student> getStudents() {
+    public Set<UserToGroup> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(Set<UserToGroup> students) {
         this.students = students;
     }
 }

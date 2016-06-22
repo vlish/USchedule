@@ -12,9 +12,6 @@ public class Image {
     @Column(name = "path")
     private String path;
 
-    public Image() {
-    }
-
     public Integer getId() {
         return id;
     }

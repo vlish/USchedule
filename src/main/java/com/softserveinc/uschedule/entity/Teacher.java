@@ -25,9 +25,6 @@ public class Teacher {
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private Set<Event> events;
 
-    public Teacher() {
-    }
-
     public Integer getId() {
         return id;
     }
