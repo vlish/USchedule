@@ -39,7 +39,7 @@ public class User {
     private Image image;
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
     private Set<Event> events;
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserToGroup> students;
 
     public Integer getId() {

@@ -23,7 +23,7 @@ public class Event {
     private LocalDateTime endDateTime;
     @Column(name = "info")
     private String info;
-    @Column(name = "eventStatus")
+    @Column(name = "event_status")
     private Boolean eventStatus;
     @ManyToOne
     @JoinColumn(name = "room_id")
