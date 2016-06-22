@@ -13,6 +13,7 @@ public class UserToGroup {
     @JoinColumn(name = "group_id")
     private Group group;
     @Enumerated(EnumType.STRING)
+    @Column(name = "group_role")
     private GroupRole groupRole;
 
     public User getUser() {

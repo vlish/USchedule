@@ -31,19 +31,19 @@ public class User {
     @Column(name = "prhone")
     private String prhone;
     @Enumerated(EnumType.STRING)
+    @Column(name = "schedule_view_type")
     private ScheduleViewType scheduleViewType;
     @Enumerated(EnumType.STRING)
+    @Column(name = "notification_type")
     private NotificationType notificationType;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
-    private Set<Event> events;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<UserToGroup> students;
+    private Set<UserToGroup> userToGroups;
     @ManyToOne
-    @JoinColumn(name = "group_role_id")
-    private GroupRole groupRole;
+    @JoinColumn(name = "application_role_id")
+    private ApplicationRole applicationRole;
 
     public Integer getId() {
         return id;
@@ -141,19 +141,19 @@ public class User {
         this.image = image;
     }
 
-    public Set<Event> getEvents() {
-        return events;
+    public Set<UserToGroup> getUserToGroups() {
+        return userToGroups;
     }
 
-    public void setEvents(Set<Event> events) {
-        this.events = events;
+    public void setUserToGroups(Set<UserToGroup> userToGroups) {
+        this.userToGroups = userToGroups;
     }
 
-    public Set<UserToGroup> getStudents() {
-        return students;
+    public ApplicationRole getApplicationRole() {
+        return applicationRole;
     }
 
-    public void setStudents(Set<UserToGroup> students) {
-        this.students = students;
+    public void setApplicationRole(ApplicationRole applicationRole) {
+        this.applicationRole = applicationRole;
     }
 }
