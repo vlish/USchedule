@@ -41,6 +41,9 @@ public class User {
     private Set<Event> events;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserToGroup> students;
+    @ManyToOne
+    @JoinColumn(name = "group_role_id")
+    private GroupRole groupRole;
 
     public Integer getId() {
         return id;

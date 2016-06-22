@@ -13,7 +13,7 @@ public class UserToGroup {
     @JoinColumn(name = "group_id")
     private Group group;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private GroupRole groupRole;
 
     public User getUser() {
         return user;
@@ -31,11 +31,11 @@ public class UserToGroup {
         this.group = group;
     }
 
-    public Role getRole() {
-        return role;
+    public GroupRole getGroupRole() {
+        return groupRole;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setGroupRole(GroupRole groupRole) {
+        this.groupRole = groupRole;
     }
 }
