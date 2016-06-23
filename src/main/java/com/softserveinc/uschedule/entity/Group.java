@@ -7,22 +7,28 @@ import java.util.Set;
 @Table(name = "group")
 public class Group {
     @Id
-    @Column(name = "group_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "key")
     private String key;
+
     @Column(name = "group_owner")
     private Integer groupOwner;
+
     @Column(name = "capacity")
     private Integer capacity;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
-    @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Schedule> schedules;
+
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<UserToGroup> userToGroups;
 

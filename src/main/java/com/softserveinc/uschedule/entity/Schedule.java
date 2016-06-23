@@ -11,17 +11,20 @@ import java.util.Set;
 public class Schedule {
 
     @Id
-    @Column(name = "schedule")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "start_date")
     @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate startDate;
+
     @Column(name = "end_date")
     @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate endDate;
+
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
     private Set<Event> events;
+
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;

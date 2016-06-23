@@ -10,27 +10,34 @@ import java.time.LocalDateTime;
 @Table(name = "event")
 public class Event {
     @Id
-    @Column(name = "event_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "name")
     private String name;
+
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     @Column(name = "start_date_time")
     private LocalDateTime startDateTime;
+
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     @Column(name = "end_date_time")
     private LocalDateTime endDateTime;
+
     @Column(name = "info")
     private String info;
+
     @Column(name = "event_status")
     private Boolean eventStatus;
+
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
+
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;

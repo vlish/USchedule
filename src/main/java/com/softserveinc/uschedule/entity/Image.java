@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Table(name = "image")
 public class Image {
     @Id
-    @Column(name = "image_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "path")
     private String path;
 

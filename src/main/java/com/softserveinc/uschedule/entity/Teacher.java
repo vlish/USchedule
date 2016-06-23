@@ -7,22 +7,28 @@ import java.util.Set;
 @Table(name = "teacher")
 public class Teacher {
     @Id
-    @Column(name = "teacher_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "phone")
     private String phone;
+
     @Column(name = "department")
     private String department;
+
     @Column(name = "faculty")
     private String faculty;
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
     private Set<Event> events;
 
     public Integer getId() {

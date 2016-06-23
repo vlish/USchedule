@@ -8,8 +8,8 @@ public class ApplicationRole {
 
     @Id
     @GeneratedValue
-    @Column(name = "role_id")
     private Integer id;
+
     @Column(name = "role")
     private String role;
 

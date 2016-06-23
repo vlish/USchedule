@@ -7,14 +7,16 @@ import java.util.Set;
 @Table(name = "room")
 public class Room {
     @Id
-    @Column(name = "room_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "location")
     private String location;
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
     private Set<Event> events;
 
     public Integer getId() {

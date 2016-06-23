@@ -3,41 +3,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-
-    <property name="now" value="now()" dbms="postgresql"/>
-    <property name="now" value="current_timestamp" dbms="postgresql"/>
-    <property name="now" value="sysdate" dbms="postgresql"/>
-
-    <property name="autoIncrement" value="false"/>
-
-    <changeSet id="20160616160300" author="vlishch">
-        <createTable tableName="user">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="firstname" type="varchar(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="lastname" type="varchar(45)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="password" type="varchar(25)">
-                <constraints nullable="false" />
-            </column>
-            <column name="date_of_birth" type="date">
-                <constraints nullable="false"/>
-            </column>
-            <column name="avatar" type="varchar(60)"/>
-            <column name="login_attempt_count" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="locked" type="boolean">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet id="20160616164200" author="vlishch">
-
+    <changeSet id="20160623121700" author="vlishch">
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>

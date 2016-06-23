@@ -10,37 +10,49 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "login_attempt_count")
     private Integer loginAttemptCount;
+
     @Column(name = "locked")
     private Boolean locked;
+
     @Column(name = "birthday")
     @Convert(converter = LocalDatePersistenceConverter.class)
     private LocalDate birthday;
+
     @Column(name = "email")
     private String email;
-    @Column(name = "prhone")
-    private String prhone;
+
+    @Column(name = "phone")
+    private String phone;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "schedule_view_type")
     private ScheduleViewType scheduleViewType;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "notification_type")
     private NotificationType notificationType;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private Image image;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<UserToGroup> userToGroups;
+
     @ManyToOne
     @JoinColumn(name = "application_role_id")
     private ApplicationRole applicationRole;
@@ -109,12 +121,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPrhone() {
-        return prhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPrhone(String prhone) {
-        this.prhone = prhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public ScheduleViewType getScheduleViewType() {

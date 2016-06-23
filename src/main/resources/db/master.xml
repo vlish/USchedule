@@ -4,4 +4,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <include file="classpath:db/changelogs/initial_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_image_20160621143000.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_application_role_20160622224200.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_user_20160616160300.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_group_20160621143000.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_user_to_group_20160622225100.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_schedule_20160621143100.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_room_20160621143200.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_teacher_20160621143200.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:db/changelogs/create_event_20160621143300.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
