@@ -1,0 +1,20 @@
+{
+  "name": "uschedule",
+  "homepage": "https://github.com/vlish/USchedule",
+  "authors": [
+    "vlishch <genre@genre-VirtualBox>"
+  ],
+  "version": "0.0.0",
+  "appPath": "src/main/webapp",
+  "testPath": "src/test/javascript/spec",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
