@@ -6,7 +6,6 @@
   ],
   "version": "0.0.0",
   "appPath": "src/main/webapp",
-  "testPath": "src/test/javascript/spec",
   "description": "",
   "main": "",
   "license": "MIT",
@@ -16,5 +15,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "underscore": "^1.8.3"
+  }
 }
