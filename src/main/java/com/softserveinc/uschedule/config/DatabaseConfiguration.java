@@ -60,7 +60,7 @@ public class DatabaseConfiguration {
         return transactionManager;
     }
 
-    Properties hibernateProperties(Environment environment) {
+    private Properties hibernateProperties(Environment environment) {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.setProperty("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
