@@ -6,16 +6,13 @@
     <property name="autoIncrement" value="true"/>
     <changeSet id="20160622224200" author="vlishch">
         <createTable tableName="user_to_group">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
             <column name="user_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="role" type="varchar(25)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="group_id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="role" type="varchar(25)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -30,6 +27,6 @@
                 baseColumnNames="group_id"
                 constraintName="fk_group_id"
                 referencedColumnNames="id"
-                referencedTableName="group"/>
+                referencedTableName="app_group"/>
     </changeSet>
 </databaseChangeLog>

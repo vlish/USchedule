@@ -1,10 +1,11 @@
 package com.softserveinc.uschedule.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "group")
+@Table(name = "app_group")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +28,10 @@ public class Group {
     private Image image;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    private Set<Schedule> schedules;
+    private Set<Schedule> schedules = new HashSet<Schedule>();
 
-    @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
-    private Set<UserToGroup> userToGroups;
+    @OneToMany(mappedBy = "pk.group", fetch = FetchType.LAZY)
+    private Set<UserToGroup> groupUsers = new HashSet<UserToGroup>();
 
     public Integer getId() {
         return id;
@@ -88,11 +89,12 @@ public class Group {
         this.schedules = schedules;
     }
 
-    public Set<UserToGroup> getUserToGroups() {
-        return userToGroups;
+    public Set<UserToGroup> getGroupUsers() {
+        return groupUsers;
     }
 
-    public void setUserToGroups(Set<UserToGroup> userToGroups) {
-        this.userToGroups = userToGroups;
+    public void setGroupUsers(Set<UserToGroup> groupUsers) {
+        this.groupUsers = groupUsers;
     }
+
 }

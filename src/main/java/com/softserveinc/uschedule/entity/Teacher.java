@@ -1,6 +1,7 @@
 package com.softserveinc.uschedule.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -29,7 +30,7 @@ public class Teacher {
     private String faculty;
 
     @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
-    private Set<Event> events;
+    private Set<Event> events = new HashSet<Event>();
 
     public Integer getId() {
         return id;

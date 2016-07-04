@@ -4,6 +4,7 @@ import com.softserveinc.uschedule.entity.util.LocalDatePersistenceConverter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -50,8 +51,8 @@ public class User {
     @JoinColumn(name = "image_id")
     private Image image;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<UserToGroup> userToGroups;
+    @OneToMany(mappedBy = "pk.user", fetch = FetchType.LAZY)
+    private Set<UserToGroup> userGroups = new HashSet<UserToGroup>();
 
     @ManyToOne
     @JoinColumn(name = "application_role_id")
@@ -158,12 +159,12 @@ public class User {
         this.image = image;
     }
 
-    public Set<UserToGroup> getUserToGroups() {
-        return userToGroups;
+    public Set<UserToGroup> getUserGroups() {
+        return userGroups;
     }
 
-    public void setUserToGroups(Set<UserToGroup> userToGroups) {
-        this.userToGroups = userToGroups;
+    public void setUserGroups(Set<UserToGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 
     public ApplicationRole getApplicationRole() {
@@ -173,4 +174,5 @@ public class User {
     public void setApplicationRole(ApplicationRole applicationRole) {
         this.applicationRole = applicationRole;
     }
+
 }

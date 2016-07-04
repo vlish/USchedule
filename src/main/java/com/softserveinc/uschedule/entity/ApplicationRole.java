@@ -3,6 +3,7 @@ package com.softserveinc.uschedule.entity;
 import org.hibernate.annotations.Columns;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class ApplicationRole {
     private String role;
 
     @OneToMany(mappedBy = "applicationRole", fetch = FetchType.LAZY)
-    private Set<User> users;
+    private Set<User> users = new HashSet<User>();
 
     public Integer getId() {
         return id;

@@ -4,6 +4,7 @@ import com.softserveinc.uschedule.entity.util.LocalDatePersistenceConverter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,7 @@ public class Schedule {
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
-    private Set<Event> events;
+    private Set<Event> events = new HashSet<Event>();
 
     @ManyToOne
     @JoinColumn(name = "group_id")

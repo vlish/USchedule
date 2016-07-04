@@ -23,7 +23,7 @@
                 baseTableName="schedule"
                 baseColumnNames="group_id"
                 constraintName="fk_group_id"
-                referencedTableName="group"
+                referencedTableName="app_group"
                 referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>
