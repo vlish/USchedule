@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "app_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,6 +56,11 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "application_role_id")
     private ApplicationRole applicationRole;
+
+    @PrePersist
+    public void onCreate() {
+        this.locked = Boolean.FALSE;
+    }
 
     public Integer getId() {
         return id;

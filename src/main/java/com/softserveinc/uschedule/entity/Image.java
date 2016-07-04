@@ -12,6 +12,12 @@ public class Image {
     @Column(name = "path")
     private String path;
 
+    @OneToOne(mappedBy = "image")
+    private User user;
+
+    @OneToOne(mappedBy = "image")
+    private Group group;
+
     public Integer getId() {
         return id;
     }
@@ -26,5 +32,21 @@ public class Image {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
