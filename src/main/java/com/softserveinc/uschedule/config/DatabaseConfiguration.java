@@ -3,9 +3,11 @@ package com.softserveinc.uschedule.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import liquibase.integration.spring.SpringLiquibase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -17,7 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
+
+import static java.util.Arrays.asList;
 
 @Configuration
 @EnableJpaRepositories({"com.softserveinc.uschedule.repository"})
@@ -25,8 +31,14 @@ import java.util.Properties;
 @EntityScan(basePackages = {"com.softserveinc.uschedule.entity"})
 public class DatabaseConfiguration {
 
+    private static final String DEV_PROFILE = "dev";
+
+    @Autowired
+    private Environment environment;
+
     @Bean
-    public DataSource dataSource(Environment environment) {
+    @Profile("dev")
+    public DataSource postgresDataSource(Environment environment) {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName(environment.getRequiredProperty("db.driver"));
         hikariConfig.setJdbcUrl(environment.getRequiredProperty("db.url"));
@@ -36,9 +48,25 @@ public class DatabaseConfiguration {
     }
 
     @Bean
+    @Profile("test")
+    public DataSource h2DataSource(Environment environment) {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setDriverClassName(environment.getRequiredProperty("db.h2.driver"));
+        hikariConfig.setJdbcUrl(environment.getRequiredProperty("db.h2.url"));
+        hikariConfig.setUsername(environment.getRequiredProperty("db.h2.username"));
+        hikariConfig.setPassword(environment.getProperty("db.h2.password"));
+        return new HikariDataSource(hikariConfig);
+    }
+
+
+    @Bean
     public SpringLiquibase liquibase(DataSource dataSource) {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:db/master.xml");
+        List<String> activeProfiles = Arrays.asList(this.environment.getActiveProfiles());
+        if (activeProfiles.contains(DEV_PROFILE))
+            liquibase.setChangeLog("classpath:db/master.xml");
+        else
+            liquibase.setChangeLog("classpath:liquibase/master.xml");
         liquibase.setDataSource(dataSource);
         return liquibase;
     }
@@ -70,4 +98,5 @@ public class DatabaseConfiguration {
 
         return properties;
     }
+
 }

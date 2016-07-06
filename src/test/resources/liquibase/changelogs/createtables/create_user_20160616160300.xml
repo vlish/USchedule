@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <property name="autoIncrement" value="true"/>
+    <changeSet id="20160616160300" author="vlishch">
+        <createTable tableName="app_user">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="login_attempt_count" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="locked" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(45)">
+                <constraints unique="true"/>
+            </column>
+            <column name="phone" type="varchar(20)">
+                <constraints unique="true" nullable="true"/>
+            </column>
+            <column name="notification_type" type="varchar(45)"/>
+            <column name="schedule_view_type" type="varchar(45)"/>
+            <column name="image_id" type="int"/>
+            <column name="application_role_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="app_user"
+                baseColumnNames="image_id"
+                constraintName="fk_image_id"
+                referencedColumnNames="id"
+                referencedTableName="image"/>
+        <addForeignKeyConstraint
+                baseTableName="app_user"
+                baseColumnNames="application_role_id"
+                constraintName="fk_app_role_id"
+                referencedColumnNames="id"
+                referencedTableName="application_role"/>
+    </changeSet>
+</databaseChangeLog>

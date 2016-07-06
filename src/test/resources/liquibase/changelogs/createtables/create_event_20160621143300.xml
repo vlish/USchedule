@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <property name="autoIncrement" value="true"/>
+    <changeSet id="20160621170000" author="vlishch">
+        <createTable tableName="event">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="info" type="varchar(255)"/>
+            <column name="event_status" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="teacher_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="schedule_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="event"
+                baseColumnNames="teacher_id"
+                constraintName="fk_teacher_id"
+                referencedColumnNames="id"
+                referencedTableName="teacher"/>
+        <addForeignKeyConstraint
+                baseTableName="event"
+                baseColumnNames="room_id"
+                constraintName="fk_room_id"
+                referencedColumnNames="id"
+                referencedTableName="room"/>
+        <addForeignKeyConstraint
+                baseTableName="event"
+                baseColumnNames="schedule_id"
+                constraintName="fk_schedule_id"
+                referencedColumnNames="id"
+                referencedTableName="schedule"/>
+    </changeSet>
+</databaseChangeLog>

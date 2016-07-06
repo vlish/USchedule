@@ -127,12 +127,9 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
-					<driver>${db.driver}</driver>
-					<url>${db.url}</url>
-					<username>${db.username}</username>
-					<password>${db.password}</password>
-					<referenceUrl>hibernate:spring:com.softserveinc.uschedule.domain?dialect=</referenceUrl>
+					<propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
+					<changeLogFile>src/main/resources/db/master.xml</changeLogFile>
+					<referenceUrl>hibernate:spring:com.softserveinc.uschedule.entity?dialect=</referenceUrl>
 					<verbose>true</verbose>
 					<logging>DEBUG</logging>
 				</configuration>

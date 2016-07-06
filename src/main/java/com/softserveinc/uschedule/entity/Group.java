@@ -30,7 +30,7 @@ public class Group {
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
     private Set<Schedule> schedules = new HashSet<Schedule>();
 
-    @OneToMany(mappedBy = "pk.group", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pk.group", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<UserToGroup> groupUsers = new HashSet<UserToGroup>();
 
     public Integer getId() {
