@@ -15,7 +15,7 @@
             <column name="last_name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="varchar(25)">
+            <column name="password" type="varchar(80)">
                 <constraints nullable="false"/>
             </column>
             <column name="birthday" type="date">
