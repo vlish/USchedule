@@ -96,7 +96,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureHandler(failureAuthenticationHandler)
                 .permitAll()
                 .and()
-                .csrf().disable()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessHandler(logoutSuccessHandler)
