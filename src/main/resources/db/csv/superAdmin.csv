@@ -1,2 +1,2 @@
 id;first_name;last_name;password;login_attempt_count;locked;birthday;email;phone;application_role_id
-1;admin;admin;$2a$10$NmBQMcgjSZqOQ6yXqAE91.hI5Bjm8XXB1Z2UbXkCRi9EDta9u1sfa;0;0;2016-12-31;admin@gmail.com;1234567890;2
+1;admin;admin;$2a$04$CO93CT2ObgMiSnMAWwoBkeFObJlMYi/wzzOnPlsTP44r7qVq0Jln2;0;0;2016-12-31;admin@gmail.com;1234567890;2

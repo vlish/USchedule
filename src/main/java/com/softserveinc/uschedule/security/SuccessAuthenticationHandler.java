@@ -17,7 +17,6 @@ public class SuccessAuthenticationHandler extends SimpleUrlAuthenticationSuccess
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         //TODO: Here add logic to refresh login attempts for
-        System.out.println();
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
 }
